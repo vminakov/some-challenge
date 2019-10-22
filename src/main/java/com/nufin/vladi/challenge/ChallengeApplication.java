@@ -26,11 +26,11 @@ public class ChallengeApplication {
 	@Bean
 	InitializingBean initDummyData() {
 		return () -> {
-			CreditCard cc1 = new CreditCard("4111111111111111");
-			Transaction t1 = new Transaction(Transaction.TransactionType.CREDIT, 100.0, 100.0, cc1);
-
-			creditCardRepository.save(cc1);
-			transactionRepository.save(t1);
+//			CreditCard cc1 = new CreditCard("4111111111111111");
+//			Transaction t1 = new Transaction(Transaction.TransactionType.CREDIT, 100.0, 100.0, cc1);
+//
+//			creditCardRepository.save(cc1);
+//			transactionRepository.save(t1);
 		};
 	}
 }
