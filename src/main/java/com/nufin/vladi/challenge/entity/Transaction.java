@@ -1,7 +1,6 @@
 package com.nufin.vladi.challenge.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.nufin.vladi.challenge.entity.CreditCard;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
