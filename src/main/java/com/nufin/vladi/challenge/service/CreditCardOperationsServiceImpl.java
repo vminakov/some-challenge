@@ -11,6 +11,9 @@ import com.nufin.vladi.challenge.service.exception.NotEnoughBalanceException;
 import com.nufin.vladi.challenge.service.exception.TransactionNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +48,7 @@ public class CreditCardOperationsServiceImpl implements CreditCardOperationsServ
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public Transaction executeTransaction(Long creditCardId, Transaction.TransactionType type, double amount) {
         CreditCard cc = creditCardRepository
                 .findById(creditCardId)
@@ -54,6 +58,7 @@ public class CreditCardOperationsServiceImpl implements CreditCardOperationsServ
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.SERIALIZABLE)
     public Transaction executeTransaction(CreditCard creditCard,Transaction.TransactionType type, double amount) {
         Transaction previousTransaction = transactionRepository
                 .findLastTransaction(creditCard)

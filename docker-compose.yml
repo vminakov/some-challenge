@@ -6,8 +6,6 @@ services:
       context: ./
       dockerfile: backend.Dockerfile
     image: vladi_challenge/backend
-    volumes:
-      - ./:/opt/challenge:cached
     working_dir: /opt/challenge
     ports:
       - "8080:8080"
@@ -17,8 +15,6 @@ services:
        context: ./frontend
        dockerfile: frontend.Dockerfile
      image: vladi_challenge/frontend
-     volumes:
-       - ./frontend:/opt/challenge_frontend:cached
      working_dir: /opt/challenge_frontend
      ports:
        - "3000:3000"
